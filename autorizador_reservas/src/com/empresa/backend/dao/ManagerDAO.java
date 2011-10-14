@@ -15,12 +15,13 @@ public class ManagerDAO {
 	public ManagerDAO(){
 	
 		super();
+		System.out.println("Inicio configuracao");
 	
 		AnnotationConfiguration configuration = new AnnotationConfiguration();  
 		  
 	    String conn = "jdbc:postgresql://localhost:5432/mobsoft";  
 	    String user = "postgres";  
-	    String senha = "senha123";  
+	    String senha = "senha123";
 	
 	    //Conexão com o banco
 	    configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
@@ -42,11 +43,12 @@ public class ManagerDAO {
 	    /** 
 	     * mapeamento 
 	     */    
-	    configuration.addAnnotatedClass(Empresas.class);  
-	    configuration.addAnnotatedClass(Reserva.class);
-	    configuration.addAnnotatedClass(Servico.class);  
+	    configuration.addAnnotatedClass(Empresas.class);
+	    configuration.addAnnotatedClass(Servico.class);
+	    configuration.addAnnotatedClass(Reserva.class);  
 	    configuration.addAnnotatedClass(Usuarios.class);
 	      
 	    ManagerDAO.factory = configuration.buildSessionFactory();
+	    System.out.println("Final de configuração");
 	}
 }

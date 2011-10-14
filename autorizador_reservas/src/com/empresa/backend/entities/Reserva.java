@@ -14,6 +14,7 @@ import javax.persistence.Table;
 @Table(name="votty_reservas")
 public class Reserva {
 	
+	
 	@Id
 	@GeneratedValue
 	@Column(name="id_reserva")
@@ -27,6 +28,12 @@ public class Reserva {
 	//@ForeignKey(name = "id_servico")
 	@OneToOne
 	@JoinColumn(name="id_servico")
-	Long idServico;
-	
+	Servico servico;
+
+	public Reserva(Date dataReserva, String imei, Servico s){
+		
+		this.dataReserva = dataReserva;
+		this.imei = imei;
+		this.servico = s;
+	}
 }

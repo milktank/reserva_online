@@ -6,7 +6,7 @@ import org.hibernate.classic.Session;
 
 import com.empresa.backend.entities.Reserva;
 
-public class ReservaDAO {
+public class ReservaDAO implements DAOIF<Reserva>{
 
 	public ReservaDAO() {
 		
@@ -30,7 +30,7 @@ public class ReservaDAO {
 		return l;
 	}
 	
-	public void save(Reserva r){
+	public void insert(Reserva r){
 		
 		//Obtendo sessão
 		Session s = ManagerDAO.factory.openSession();
@@ -43,5 +43,11 @@ public class ReservaDAO {
 		s.getTransaction().commit();
 		
 		s.close();
+	}
+
+	@Override
+	public Reserva searchOne(Reserva model) {
+
+		return null;
 	}
 }
