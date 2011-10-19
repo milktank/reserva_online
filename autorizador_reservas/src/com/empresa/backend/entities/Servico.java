@@ -8,9 +8,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.Filters;
+import org.hibernate.annotations.ParamDef;
+
 
 @Entity
 @Table(name="mobsoft_servicos")
+@FilterDef(name="descricaoIgual", parameters=@ParamDef( name="descricaoIgual", type="string" ))
+@Filters( {
+    @Filter(name="mesmaDescricao", condition="descricao like %:descricaoIgual%")
+} )
 public class Servico {
 
 	@Id
@@ -26,6 +35,11 @@ public class Servico {
 	@ManyToOne
 	@JoinColumn(name="fk_id_empresa")
 	Empresas empresa;
+	
+	public Servico() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Servico(String descricao, Float valor) {
 		super();
