@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.empresa.backend.dao.ManagerDAO;
 import com.empresa.backend.dao.ReservaDAO;
+import com.empresa.backend.dao.ServicoDAO;
 import com.empresa.backend.entities.Reserva;
 import com.empresa.backend.entities.Servico;
 
@@ -43,7 +44,10 @@ public class ServletTeste extends HttpServlet {
 		
 		System.out.println("teste");
 		ReservaDAO rDao = new ReservaDAO(); //criando novo DAO de reserva para
+		ServicoDAO sDao = new ServicoDAO();
 		Servico serv = new Servico("servicin", 2f);
+		sDao.insert(serv);
+		System.out.println(serv);
 		Date data = new Date();
 		data.setTime(Calendar.getInstance().getTimeInMillis());
 		rDao.insert(new Reserva(data, "123", serv));

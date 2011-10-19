@@ -14,6 +14,7 @@ import javax.persistence.Table;
 public class Servico {
 
 	@Id
+	@Column(name="id_servico")
 	@GeneratedValue
 	Long id;
 	
@@ -30,5 +31,59 @@ public class Servico {
 		super();
 		this.descricao = descricao;
 		this.valor = valor;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+
+
+	public Float getValor() {
+		return valor;
+	}
+
+
+
+	public void setValor(Float valor) {
+		this.valor = valor;
+	}
+
+
+
+	public Empresas getEmpresa() {
+		return empresa;
+	}
+
+
+
+	public void setEmpresa(Empresas empresa) {
+		this.empresa = empresa;
+	}
+
+
+
+	@Override
+	public String toString() {
+
+		return this.descricao + " " + this.id + " " + this.valor;
 	}
 }
