@@ -29,8 +29,6 @@ public class Empresas {
 		// TODO Auto-generated constructor stub
 	}
 
-
-
 	public Empresas(String nome, String cnpj, String endereco) {
 		super();
 		this.nome = nome;
@@ -38,4 +36,35 @@ public class Empresas {
 		this.endereco = endereco;
 	}
 
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public Long getId_empresa() {
+		return id_empresa;
+	}
+
+	public void setId_empresa(Long id_empresa) {
+		this.id_empresa = id_empresa;
+	}
 }

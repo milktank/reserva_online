@@ -3,22 +3,31 @@ package com.empresa.backend.comunicacao;
 
 public class Estabelecimento {
 	
-	private int idrest;
+	private long idrest;
 	private String nome;
 	private String descricao;
 	private String telefone;
 	private String endereco;
 	private String urllogo;
 	
-	public int getIdrest() {
+	public Estabelecimento(long idrest, String nome, String descricao,
+			String telefone, String endereco, String urllogo) {
+		super();
+		this.idrest = idrest;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.telefone = telefone;
+		this.endereco = endereco;
+		this.urllogo = urllogo;
+	}
+
+	public long getIdrest() {
 		return idrest;
 	}
 	
 	public String getEndereco() {
 		return endereco;
 	}
-
-
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;

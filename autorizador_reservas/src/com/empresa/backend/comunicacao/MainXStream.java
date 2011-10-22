@@ -9,7 +9,7 @@ public class MainXStream {
 		
 		CreateJSONXStream cj = new CreateJSONXStream();
 		
-		Estabelecimento r1 = new Estabelecimento();
+		/*Estabelecimento r1 = new Estabelecimento();
 		r1.setNome("rest01");
 		r1.setDescricao("aaa");
 		
@@ -28,7 +28,7 @@ public class MainXStream {
 		
 		String json2 = cj.getXs().toXML(restaurantes);
 		
-		System.out.println(json2);
+		System.out.println(json2);*/
 		
 	}
 

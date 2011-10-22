@@ -1,6 +1,8 @@
 package com.mobisoft.backend.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,12 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.empresa.backend.dao.CategoriaRestauranteDAO;
-import com.empresa.backend.dao.EmpresaDAO;
+import com.empresa.backend.comunicacao.CreateJSONXStream;
+import com.empresa.backend.comunicacao.Estabelecimento;
+import com.empresa.backend.comunicacao.Restaurantes;
 import com.empresa.backend.dao.ManagerDAO;
 import com.empresa.backend.dao.RestauranteDAO;
-import com.empresa.backend.entities.CategoriaRestaurante;
-import com.empresa.backend.entities.Empresas;
 import com.empresa.backend.entities.Restaurante;
 
 /**
@@ -56,7 +57,7 @@ public class ServletTeste extends HttpServlet {
 		Servico serv = new Servico("servicin", 2f);
 		System.out.println(sDao.searchOne(serv));*/
 		
-		CategoriaRestaurante cr = new CategoriaRestaurante("Restaurantes Chines", "Todos Chineses");
+		/*CategoriaRestaurante cr = new CategoriaRestaurante("Restaurantes Chines", "Todos Chineses");
 		new CategoriaRestauranteDAO().insert(cr);
 		
 		Empresas e = new Empresas("Empresa dos Chines", "0987654321", "Epitácio Pessoa");
@@ -64,9 +65,23 @@ public class ServletTeste extends HttpServlet {
 		
 		Restaurante r = new Restaurante("China InBox2", "In Box2 Epitácio", 1.4d, 1.5d, "http://www.myigadget.com/blog-en/blog/wp-content/uploads/2011/04/93aadd95iphone3g-4.jpg", e, cr);
 		RestauranteDAO restDao = new RestauranteDAO();
-		restDao.insert(r);
+		restDao.insert(r);*/
 		
-		response.sendError(530);
+		RestauranteDAO restDao = new RestauranteDAO();
+		List<Restaurante> lista = restDao.getAll();
+		ArrayList<Estabelecimento> rs = new ArrayList<Estabelecimento>();
+		
+		for(Restaurante r : lista)
+			rs.add(new Estabelecimento(r.getId(), r.getNome(), r.getDescricao(), "88440962", r.getEmpresa().getEndereco(), r.getUrlLogo()));
+		Restaurantes restaurantes = new Restaurantes();
+		restaurantes.setRests(rs);	
+		CreateJSONXStream cj = new CreateJSONXStream();
+		String json2 = cj.getXs().toXML(restaurantes);
+		System.out.println(json2);
+		
+		response.getWriter().append(json2);
+		
+		//response.sendError(530);
 	}
 
 	/**
