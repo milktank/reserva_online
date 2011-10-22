@@ -24,4 +24,18 @@ public class Empresas {
 	@Column(name="id_empresa")
 	Long id_empresa;
 	
+	public Empresas() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public Empresas(String nome, String cnpj, String endereco) {
+		super();
+		this.nome = nome;
+		this.cnpj = cnpj;
+		this.endereco = endereco;
+	}
+
 }

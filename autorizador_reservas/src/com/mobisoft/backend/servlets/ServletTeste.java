@@ -8,9 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.empresa.backend.dao.CategoriaRestauranteDAO;
+import com.empresa.backend.dao.EmpresaDAO;
 import com.empresa.backend.dao.ManagerDAO;
-import com.empresa.backend.dao.ServicoDAO;
-import com.empresa.backend.entities.Servico;
+import com.empresa.backend.dao.RestauranteDAO;
+import com.empresa.backend.entities.CategoriaRestaurante;
+import com.empresa.backend.entities.Empresas;
+import com.empresa.backend.entities.Restaurante;
 
 /**
  * Servlet implementation class ServletTeste
@@ -48,9 +52,19 @@ public class ServletTeste extends HttpServlet {
 		data.setTime(Calendar.getInstance().getTimeInMillis());
 		rDao.insert(new Reserva(data, "123", serv));*/
 		
-		ServicoDAO sDao = new ServicoDAO();
+		/*ServicoDAO sDao = new ServicoDAO();
 		Servico serv = new Servico("servicin", 2f);
-		System.out.println(sDao.searchOne(serv));
+		System.out.println(sDao.searchOne(serv));*/
+		
+		CategoriaRestaurante cr = new CategoriaRestaurante("Restaurantes Chines", "Todos Chineses");
+		new CategoriaRestauranteDAO().insert(cr);
+		
+		Empresas e = new Empresas("Empresa dos Chines", "0987654321", "Epitácio Pessoa");
+		new EmpresaDAO().insert(e);
+		
+		Restaurante r = new Restaurante("China InBox", "In Box Epitácio", 1.4d, 1.5d, "http://google.com", e, cr);
+		RestauranteDAO restDao = new RestauranteDAO();
+		restDao.insert(r);
 		
 		response.sendError(530);
 	}

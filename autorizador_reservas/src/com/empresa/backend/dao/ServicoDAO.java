@@ -16,7 +16,7 @@ public class ServicoDAO implements DAOIF<Servico> {
 		//iniciando transacao e obtendo todos os objetos
 		s.beginTransaction();
 		@SuppressWarnings("unchecked")
-		List<Servico> l = (List<Servico>)s.createCriteria(Servico.class);
+		List<Servico> l = (List<Servico>)s.createCriteria(Servico.class).list();
 		
 		//finaliizando transacao
 		s.getTransaction().commit();

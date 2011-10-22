@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Filter;
@@ -35,6 +36,13 @@ public class Servico {
 	@ManyToOne
 	@JoinColumn(name="fk_id_empresa")
 	Empresas empresa;
+	
+	@ManyToOne
+	@JoinColumn(name="fk_tipo_servico")
+	TipoServico tipo;
+	
+	@OneToOne
+	private Reserva reserva;
 	
 	public Servico() {
 		super();
@@ -87,17 +95,21 @@ public class Servico {
 		return empresa;
 	}
 
-
-
 	public void setEmpresa(Empresas empresa) {
 		this.empresa = empresa;
 	}
-
-
 
 	@Override
 	public String toString() {
 
 		return this.descricao + " " + this.id + " " + this.valor;
+	}
+
+	public Reserva getReserva() {
+		return reserva;
+	}
+
+	public void setReserva(Reserva reserva) {
+		this.reserva = reserva;
 	}
 }

@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,8 +25,10 @@ public class Reserva {
 	@Column(name="imei_dispositivo")
 	String imei;
 	
-	//@ForeignKey(name = "id_servico")
-	@OneToOne
+	@Column(name="item_reservado")
+	String item;
+	
+	@ManyToOne
 	@JoinColumn(name="id_servico")
 	Servico servico;
 

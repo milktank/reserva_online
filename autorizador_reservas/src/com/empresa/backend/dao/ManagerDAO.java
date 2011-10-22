@@ -3,9 +3,12 @@ package com.empresa.backend.dao;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
+import com.empresa.backend.entities.CategoriaRestaurante;
 import com.empresa.backend.entities.Empresas;
 import com.empresa.backend.entities.Reserva;
+import com.empresa.backend.entities.Restaurante;
 import com.empresa.backend.entities.Servico;
+import com.empresa.backend.entities.TipoServico;
 import com.empresa.backend.entities.Usuarios;
 
 public class ManagerDAO {
@@ -44,9 +47,12 @@ public class ManagerDAO {
 	     * mapeamento 
 	     */    
 	    configuration.addAnnotatedClass(Empresas.class);
+	    configuration.addAnnotatedClass(TipoServico.class);
 	    configuration.addAnnotatedClass(Servico.class);
 	    configuration.addAnnotatedClass(Reserva.class);  
 	    configuration.addAnnotatedClass(Usuarios.class);
+	    configuration.addAnnotatedClass(CategoriaRestaurante.class);
+	    configuration.addAnnotatedClass(Restaurante.class);
 	      
 	    ManagerDAO.factory = configuration.buildSessionFactory();
 	    System.out.println("Final de configuração");
