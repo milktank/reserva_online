@@ -22,9 +22,9 @@ public class ManagerDAO {
 	
 		AnnotationConfiguration configuration = new AnnotationConfiguration();  
 		  
-	    String conn = "jdbc:postgresql://localhost:5432/empresa";  
-	    String user = "renato";  
-	    String senha = "santo";
+	    String conn = "jdbc:postgresql://localhost:5432/mob_soft";  
+	    String user = "postgres";  
+	    String senha = "123";
 	
 	    //Conexão com o banco
 	    configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");

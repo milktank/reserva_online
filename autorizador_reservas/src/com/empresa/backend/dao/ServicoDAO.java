@@ -2,8 +2,10 @@ package com.empresa.backend.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Filter;
 import org.hibernate.classic.Session;
+import org.hibernate.criterion.Restrictions;
 
 import com.empresa.backend.entities.Servico;
 
@@ -24,6 +26,26 @@ public class ServicoDAO implements DAOIF<Servico> {
 		s.close();
 		
 		return l;
+	}
+	
+	public Servico getServico(long id) {
+
+		//Obtendo sessão
+		Session s = ManagerDAO.factory.openSession();
+		
+		Criteria c = s.createCriteria(Servico.class);
+		c.add(Restrictions.eq("id", id));
+		
+		//iniciando transacao e obtendo todos os objetos
+		s.beginTransaction();
+		@SuppressWarnings("unchecked")
+		List<Servico> l = (List<Servico>)s.createCriteria(Servico.class).list();
+		
+		//finaliizando transacao
+		s.getTransaction().commit();
+		s.close();
+		
+		return l.get(0);
 	}
 
 	public Servico searchOne(Servico model) {
